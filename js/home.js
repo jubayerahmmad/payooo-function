@@ -32,8 +32,12 @@ document.getElementById("btn-cash-out").addEventListener("click", function (e) {
   const currentBalance = getTextValue("current-balance");
 
   if (pinNumber == "1234") {
-    const newBalance = currentBalance - cashOut;
-    document.getElementById("current-balance").innerText = newBalance;
+    if (cashOut <= currentBalance) {
+      const newBalance = currentBalance - cashOut;
+      document.getElementById("current-balance").innerText = newBalance;
+    } else {
+      alert("Insufficient Balance");
+    }
   } else {
     alert("Invalid PIN");
   }
